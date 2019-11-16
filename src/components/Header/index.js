@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { FaShoePrints} from 'react-icons/fa'
 import { MdShoppingBasket } from 'react-icons/md'
 
-import { Container, Cart} from './styles'
+import { Container, Cart, Logo} from './styles'
 
 export default function Header() {
     return (
         <Container>
-            <Link to="/" style={{textDecoration: "none"}}>
-                <h1>Redux Shoestore <FaShoePrints /> </h1>
-            </Link>
+            <Logo to="/" style={{textDecoration: "none"}}>
+                <h1>Redux Shoestore </h1><FaShoePrints width='100%' height='100%'/> 
+            </Logo>
             <Cart to="/cart">
                 <div>
                     <strong>My cart</strong>

@@ -12,6 +12,17 @@ export const Container = styled.header`
     }
 `
 
+export const Logo = styled(Link)`
+    display: flex;
+    align-items: baseline;
+    svg {
+        color: #FFF;
+        margin-left: 10px;
+        height: 15px;
+        width: 30px;
+    }
+`
+
 export const Cart = styled(Link)`
     display: flex;
     align-items: center;
@@ -35,7 +46,5 @@ export const Cart = styled(Link)`
           font-size: 12px;
           color: #999;
       }
-
-
     }
 `
