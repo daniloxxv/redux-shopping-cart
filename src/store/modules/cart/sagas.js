@@ -1,4 +1,5 @@
 import {call, select, put, all, takeLatest} from 'redux-saga/effects'
+import {toast }from 'react-toastify'
 
 import {formatPrice} from '../../../util/format'
 import api from '../../../services/api'
@@ -17,11 +18,15 @@ function* addToCart({id}) {
 
     const amount = currentAmount + 1
 
-    if (amount > stockAmount) return
+    if (amount > stockAmount) {
+        toast.error('Item out of stock')
+        return
+    }
 
     if (productExists) {
         yield put(updateAmount(id, amount))
     }
+    
     else {
         const response = yield call(api.get, `/products/${id}`)
         const data = {
