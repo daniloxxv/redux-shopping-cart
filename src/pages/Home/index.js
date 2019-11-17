@@ -36,7 +36,7 @@ function Home(props) {
                         <span>{product.formattedPrice}</span>
                         <button type="button" onClick={()=>handleAddProduct(product)}>
                             <div>
-                                <MdAddShoppingCart size={16} color='#FFF'/> 3
+                                <MdAddShoppingCart size={16} color='#FFF'/> {props.amount[product.id] || 0}
                             </div>
                             <span>Add to cart</span>
                         </button>
@@ -49,4 +49,10 @@ function Home(props) {
 
 const mapDispatchToProps = dispatch => bindActionCreators(CartActions,dispatch)
 
-export default connect(null,mapDispatchToProps)(Home);
+const mapStateToprops = state =>({
+    amount: state.cart.reduce((amount, product)=>({
+        ...amount, [product.id]: product.amount
+    }), {})
+})
+
+export default connect(mapStateToprops,mapDispatchToProps)(Home);
