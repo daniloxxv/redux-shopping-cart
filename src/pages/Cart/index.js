@@ -2,8 +2,9 @@ import React from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {MdRemoveCircleOutline, MdAddCircleOutline, MdDelete} from 'react-icons/md'
-import {formatPrice} from '../../util/format'
 
+import {formatPrice} from '../../util/format'
+import history from '../../services/history'
 import * as CartActions from '../../store/modules/cart/actions'
 import {Container, ProductTable, Total} from './styles'
 
@@ -73,7 +74,7 @@ function Cart({cart, removeFromCart, updateAmountRequest, total}) {
 
            <footer>
                <button type="button">Place my order</button>
-
+               <button type="button" onClick={()=>history.push('/')}>Continue shopping</button>
                <Total>
                    <span>TOTAL</span>
                    <strong>{total}</strong>
