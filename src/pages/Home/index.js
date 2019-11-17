@@ -8,12 +8,12 @@ import {formatPrice} from '../../util/format'
 import { ProductList } from './styles'
 import * as CartActions from '../../store/modules/cart/actions'
 
-function Home({addToCart, amount}) {
+function Home({addToCartRequest, amount}) {
 
     const [products, setProducts] = useState([])
 
-    const handleAddProduct = product =>{
-        addToCart(product)
+    const handleAddProduct = id =>{
+        addToCartRequest(id)
     }
 
     useEffect(()=>{
@@ -34,7 +34,7 @@ function Home({addToCart, amount}) {
                         <img src={product.image} alt={product.title}/>
                         <strong>{product.title}</strong>
                         <span>{product.formattedPrice}</span>
-                        <button type="button" onClick={()=>handleAddProduct(product)}>
+                        <button type="button" onClick={()=>handleAddProduct(product.id)}>
                             <div>
                                 <MdAddShoppingCart size={16} color='#FFF'/> {amount[product.id] || 0}
                             </div>

@@ -1,6 +1,6 @@
 export default function cart(state=[], action){
     switch (action.type) {
-        case '@cart/ADD':
+        case '@cart/ADD_SUCCESS':
             const index = state.findIndex(el=>el.id === action.product.id)
             return index === -1 ? 
                 [...state, {...action.product, amount: 1}] : 
