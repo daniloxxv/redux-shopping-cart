@@ -21,7 +21,7 @@ function Home(props) {
         const response = await api.get('products')
         const data = response.data.map(product=>({
             ...product, 
-            price: formatPrice(product.price)
+            formattedPrice: formatPrice(product.price)
         }))
         setProducts(data)
       })()   
@@ -33,7 +33,7 @@ function Home(props) {
                     <li key={product.id}>
                         <img src={product.image} alt={product.title}/>
                         <strong>{product.title}</strong>
-                        <span>{product.price}</span>
+                        <span>{product.formattedPrice}</span>
                         <button type="button" onClick={()=>handleAddProduct(product)}>
                             <div>
                                 <MdAddShoppingCart size={16} color='#FFF'/> 3
