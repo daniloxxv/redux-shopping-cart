@@ -2,17 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import { MdAddShoppingCart} from 'react-icons/md'
+
 import api from '../../services/api'
 import {formatPrice} from '../../util/format'
 import { ProductList } from './styles'
 import * as CartActions from '../../store/modules/cart/actions'
 
-function Home(props) {
+function Home({addToCart, amount}) {
 
     const [products, setProducts] = useState([])
 
     const handleAddProduct = product =>{
-        const {addToCart} = props;
         addToCart(product)
     }
 
@@ -36,7 +36,7 @@ function Home(props) {
                         <span>{product.formattedPrice}</span>
                         <button type="button" onClick={()=>handleAddProduct(product)}>
                             <div>
-                                <MdAddShoppingCart size={16} color='#FFF'/> {props.amount[product.id] || 0}
+                                <MdAddShoppingCart size={16} color='#FFF'/> {amount[product.id] || 0}
                             </div>
                             <span>Add to cart</span>
                         </button>
