@@ -5,7 +5,7 @@ import { MdShoppingBasket } from 'react-icons/md'
 
 import { Container, Cart, Logo} from './styles'
 
-export default function() {
+export default function Header() {
     const cartSize = useSelector(state=>state.cart.length)
     return (
         <Container>
