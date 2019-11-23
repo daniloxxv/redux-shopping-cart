@@ -1,11 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { FaShoePrints} from 'react-icons/fa'
 import { MdShoppingBasket } from 'react-icons/md'
 
 import { Container, Cart, Logo} from './styles'
 
-function Header({numberOfItems}) {
+export default function() {
+    const cartSize = useSelector(state=>state.cart.length)
     return (
         <Container>
             <Logo to="/" style={{textDecoration: "none"}}>
@@ -14,14 +15,10 @@ function Header({numberOfItems}) {
             <Cart to="/cart">
                 <div>
                     <strong>My cart</strong>
-                    <span>{numberOfItems} items</span>
+                    <span>{cartSize} items</span>
                 </div>
                 <MdShoppingBasket size= {36} color="#FFF"/>
             </Cart>  
         </Container>
     )
 }
-
-export default connect(state=>({
-    numberOfItems: state.cart.length
-}))(Header);
